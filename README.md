@@ -8,7 +8,7 @@ This is a Python project that helps ordering food from the canteen with out the 
 - Does not allow you to order if balance is lower than price
 
 ## **How to Run the Program**
-1. MAke sure you have Python installed
+1. Make sure you have Python installed
 2. Download the file 'canteen_ordering_system.py'
 3. Open a terminal or command promt
 4. Press run or F5
