@@ -1,0 +1,74 @@
+menu = {
+    "zians hotdog": 50,
+    "chris longganisa": 120,
+    "liams meatballs": 35,
+    "xavis watermelon": 20,
+    "clents lemonade": 15,
+    "matheaus chocolate": 10
+}
+
+accounts = {}
+
+orders_record = {}
+
+while True:
+    
+    choice = input("menu \n1. make account \n2. login \n3. exit \n")
+    
+    if choice == "1": 
+        username = input("enter username: ")
+        acpass = input("enter password: ")
+        
+        accounts[username] = {
+            "acpass": acpass,
+            "balance": 0
+        }
+        
+
+    elif choice == "2":
+        username = input("Enter username: ")
+        acpass = input("Enter password: ")
+        
+        if username in accounts and accounts[username]["acpass"] == acpass:
+            print("logged in")
+
+            while True:
+                
+                option = input("ordering system \n1. display menu \n2. check balance \n3. add balance \n4. order \n5. logout \n")
+
+                if option == "1":
+                    print("\nmenu")
+                    for item, price in menu.items():
+                        print(item, "-", price)
+
+                elif option == "2":
+                    print(f"Your balance: {accounts[username]['balance']} pesos")
+
+                elif option == "3":
+                    username = input("enter username: ")
+        
+                    if username in accounts:
+                        addbalance = int(input("how much do you want to add? "))
+                        accounts[username]["balance"] += addbalance
+                        print("balance updated")
+                
+                elif option == "4":
+                    print("under construction")
+                    
+                elif option == "5":
+                    break
+
+                else:
+                    print("Invalid option. Choose 1-4.")
+
+        else:
+            print("wrong password")
+
+    
+        
+
+    elif choice == "3":
+        break
+
+    else:
+        print("Invalid choice. Choose 1-4.")
