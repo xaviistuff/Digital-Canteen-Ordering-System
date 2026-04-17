@@ -25,3 +25,7 @@ Version 2.2.0    April 15, 2026
 - Uploaded 4th quarter progress report
 - Renamed 3rd quarter progress report
 
+Version 2.3.0    April 17, 2026
+- Started full development of main code, implementing SQLite into the code.
+
+
