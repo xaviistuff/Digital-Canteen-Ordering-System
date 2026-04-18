@@ -34,4 +34,8 @@ Version 2.4.0    April 17, 2026
 Version 2.5.0    April 18, 2026
 - Decided to use and implemented json files to act as a database instead of SQLite.
 
+Version 2.6.0    April 18, 2026
+- Created the full main code using json files to save data and using gmail to send order receipts.
+- Working on using flask.
+
 
