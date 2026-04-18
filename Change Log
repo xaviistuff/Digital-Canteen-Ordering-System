@@ -31,4 +31,7 @@ Version 2.3.0    April 17, 2026
 Version 2.4.0    April 17, 2026
 - Finished full python code, will add a Gmail sending part for the ordering system, and SQLite for a data base soon.
 
+Version 2.5.0    April 18, 2026
+- Decided to use and implemented json files to act as a database instead of SQLite.
+
 
