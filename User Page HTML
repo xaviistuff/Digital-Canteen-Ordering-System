@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h2>User Panel</h2>
+
+<p>Welcome {{ username }}</p>
+<p>Balance: {{ balance }}</p>
+
+<h3>Menu</h3>
+
+<form action="/order" method="POST">
+
+<table>
+{% for item, price in menu.items() %}
+<tr>
+    <td>{{ item }} - {{ price }}</td>
+    <td>
+        <input type="hidden" name="items" value="{{ item }}">
+        <input type="number" name="qty_{{ item }}" min="0" value="0">
+    </td>
+</tr>
+{% endfor %}
+</table>
+
+<br>
+
+<button type="submit">Checkout Order</button>
+
+</form>
+
+<br>
+
+<h3>Change Password</h3>
+<form action="/change_password" method="POST">
+<input name="old" placeholder="old password">
+<input name="new" placeholder="new password">
+<button>Change</button>
+</form>
+
+<br>
+<a href="/logout">Logout</a>
+
+</body>
+</html>
