@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h2>Admin Panel</h2>
+
+<h3>Users</h3>
+<ul>
+{% for username, data in accounts.items() %}
+    <li>
+        <a href="/manage_user/{{ username }}">
+            {{ username }} ({{ data.role }})
+        </a>
+    </li>
+{% endfor %}
+</ul>
+
+<hr>
+
+<h3>Menu</h3>
+<ul>
+{% for item, price in menu.items() %}
+    <li>{{ item }} - {{ price }}</li>
+{% endfor %}
+</ul>
+
+<h3>Add Item</h3>
+<form action="/add_item" method="POST">
+    <input name="item" placeholder="item">
+    <input name="price" placeholder="price">
+    <button>Add</button>
+</form>
+
+<h3>Remove Item</h3>
+<form action="/remove_item" method="POST">
+    <input name="item" placeholder="item">
+    <button>Remove</button>
+</form>
+
+<h3>Create Account</h3>
+<form action="/create_account" method="POST">
+    <input name="username" placeholder= "username">
+    <input name="password" placeholder= "password">
+    <button>Create</button>
+</form>
+
+<br>
+<a href="/logout">Logout</a>
+
+</body>
+</html>
