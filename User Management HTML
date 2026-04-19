@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h2>User: {{ target }}</h2>
+
+<p>Balance: {{ data.balance }}</p>
+
+<h3>Orders</h3>
+<ul>
+{% for o in orders %}
+<li>
+{{ o.date }} - {{ o.qty }}x {{ o.item }} = {{ o.total }}
+</li>
+{% endfor %}
+</ul>
+
+<h3>Update Balance</h3>
+<form action="/update_balance" method="POST">
+<input type="hidden" name="username" value="{{ target }}">
+<input name="balance">
+<button>Update</button>
+</form>
+
+<h3>Reset Password</h3>
+<form action="/reset_password" method="POST">
+<input type="hidden" name="username" value="{{ target }}">
+<input name="password">
+<button>Reset</button>
+</form>
+
+<h3>Delete User</h3>
+<form action="/delete_user" method="POST">
+<input type="hidden" name="username" value="{{ target }}">
+<button>Delete</button>
+</form>
+
+<br>
+<a href="/admin">Back</a>
+
+</body>
+</html>
