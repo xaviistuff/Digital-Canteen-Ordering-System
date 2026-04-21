@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<h1>Welcome {{ username.title() }}</h1>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+    <a href="/logout"><button>Logout</button></a>
+    <button onclick="togglePassword()">Change Password</button>
+</div>
+
+<p>Balance: ₱{{ balance }}</p>
+<p>Date: {{ today }}</p>
+
+<!-- ✅ MESSAGE DISPLAY (IMPORTANT) -->
+{% if message %}
+<div class="message">{{ message }}</div>
+{% endif %}
+
+<!-- PASSWORD PANEL -->
+<div id="passwordPanel">
+    <form method="POST" action="/change_password">
+        <input type="password" name="password" placeholder="New Password" required>
+        <button type="submit">Update</button>
+    </form>
+</div>
+
+<h2>Menu</h2>
+
+<!-- CATEGORY BUTTONS -->
+<div class="category-buttons">
+{% for category in menu %}
+    <button type="button" onclick="showCategory('{{ category }}')">
+        {{ category }}
+    </button>
+{% endfor %}
+</div>
+
+<!-- ORDER FORM -->
+<form method="POST" action="/place_order">
+
+<!-- CATEGORY SECTIONS -->
+{% for category, items in menu.items() %}
+<div id="{{ category }}" class="category-section">
+
+    <h3>{{ category }}</h3>
+
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Qty</th>
+        </tr>
+
+        {% for item, price in items.items() %}
+        <tr>
+            <td>{{ item.replace('_',' ').title() }}</td>
+            <td>₱{{ price }}</td>
+            <td>
+                <input type="number" name="{{ item }}" min="0" value="0">
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</div>
+{% endfor %}
+
+<br>
+<button type="submit">Place Order</button>
+
+</form>
+
+<!-- SCRIPTS -->
+<script>
+function showCategory(id) {
+    let sections = document.getElementsByClassName("category-section");
+
+    for (let i = 0; i < sections.length; i++) {
+        sections[i].style.display = "none";
+    }
+
+    document.getElementById(id).style.display = "block";
+}
+
+// show first category by default
+window.onload = function() {
+    let first = document.getElementsByClassName("category-section")[0];
+    if (first) first.style.display = "block";
+};
+
+function togglePassword() {
+    let p = document.getElementById("passwordPanel");
+    p.style.display = p.style.display === "block" ? "none" : "block";
+}
+</script>
+
+</body>
+</html>

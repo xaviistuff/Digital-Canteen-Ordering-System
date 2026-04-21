@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<h1>{{ target.title() }}</h1>
+
+<a href="/admin"><button>Back</button></a>
+
+<hr>
+
+<p>Balance: ₱{{ data.balance }}</p>
+<p>Total Orders: {{ total_orders }}</p>
+
+<h3>Change Balance</h3>
+<form method="POST" action="/change_balance/{{ target }}">
+    <input name="balance" type="number">
+    <button>Update</button>
+</form>
+
+<h3>Reset Password</h3>
+<form method="POST" action="/reset_password/{{ target }}">
+    <input name="password" type="password">
+    <button>Reset</button>
+</form>
+
+<h3>Delete User</h3>
+<form method="POST" action="/delete_user/{{ target }}">
+    <button style="background:red;">Delete</button>
+</form>
+
+<hr>
+
+<h2>Orders</h2>
+
+
+{% for o in orders %}
+    <p>
+        <b>{{ o.date }}</b><br>
+
+        {% for item in o["items"] %}
+            {{ item }}<br>
+        {% endfor %}
+
+        <b>Total:</b> ₱{{ o.total }}
+    </p>
+    <hr>
+{% endfor %}
+
+</body>
+</html>
