@@ -38,4 +38,15 @@ Version 2.6.0    April 18, 2026
 - Created the full main code using json files to save data and using gmail to send order receipts.
 - Working on using flask.
 
+Version 2.7.0    April 19, 2026
+- Finished HTML codes for user, admin, login and user management views.
+- Working on CSS 
+- Added button pop up for menu, user search bar and change password integrated into user view.
+
+Version 2.7.0    April 20, 2026
+- Did final bug testing
+
+Version 2.8.0    April 21, 2026
+- Finished final output.
+
 
